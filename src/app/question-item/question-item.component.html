@@ -1,0 +1,25 @@
+<div class="row question-item" [ngClass]="{'isAlreadyAdded': isAlreadyAdded}">
+  <div class="col-lg-1 col-md-1 hidden-sm-down app-icon">
+    <img src="assets/Excel.png">
+  </div>
+  <div class="col-lg-9 col-md-9 col-sm-8 question-info-container">
+    <p><span class="activity-name">{{question.application}} Activity {{question.activity}}</span>: {{question.stepText}}</p>
+    <p>Skills(2): <span *ngFor="let skill of question.skill">{{skill}}</span></p>
+    <p><span class="text-primary">{{question.series}}</span> &gt; <span class="text-primary">Chapter {{question.chapter}}</span> | <span class="score">Score: {{question.score}}</span></p>
+  </div>
+  <div class="col-lg-2 col-md-2 col-sm-4 operations-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4">
+          <i class="fa fa-plus-circle preventDrag" aria-hidden="true" (click) = "addQuestion(question)"></i>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-location-arrow preventDrag" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-arrows" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.assignment-item {
+  @include no-select;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 10px;
+  .bold {
+    font-weight: 600;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
