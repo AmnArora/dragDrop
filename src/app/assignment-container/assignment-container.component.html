@@ -1,6 +1,6 @@
 <div [dragula]='"questions-bag"' [dragulaModel]='Assignmentquestions' class="container" id="assignment-container">
-  <app-assignment-item *ngFor="let question of Assignmentquestions; let qIndex = index;" [questionData]="question" [questionIndex] = "qIndex + 1"></app-assignment-item>
-  <div id = "instruction-text" *ngIf="!isElementOver">
+  <app-assignment-item *ngFor="let question of Assignmentquestions; let qIndex = index;" [questionData]="question" [questionIndex]="qIndex + 1"></app-assignment-item>
+  <div id="instruction-text" *ngIf="!isElementOver">
     Drop Questions Here
   </div>
 </div>

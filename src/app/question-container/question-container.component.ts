@@ -28,9 +28,9 @@ export class QuestionContainerComponent implements OnInit {
 				return source === document.getElementById("question-container")
 			},
 			// question-items in question container that are not added yet are draggable 
-			moves: function (el, container, handle) {
+			moves: function (el, source, handle, sibling) {
 				let taskID = el.dataset.id;
-				if (container === document.getElementById("question-container")) {
+				if (source === document.getElementById("question-container")) {
 					if (self.isQuestionAlreadyAdded(taskID) || self.isHandleAnyofTheButtons(handle)) {
 						return false;
 					}
@@ -39,7 +39,7 @@ export class QuestionContainerComponent implements OnInit {
 			},
 			// Dont Allow Items to be dragged back to the question container. Only assignment container can accept questions
 			accepts: function (el, target) {
-				return target == document.getElementById("assignment-container")
+				return target !== document.getElementById("question-container")
 			}
 		});
 	}
@@ -48,7 +48,7 @@ export class QuestionContainerComponent implements OnInit {
 			this.questions = questions;
 		});
 		this.drake = this.dragulaService.find("questions-bag").drake;
-		this.drake.on("cloned", this.modifyCloneDOM.bind(this));
+		this.drake.on("cloned", this.modifyCloneDOM);
 	}
 
 	modifyCloneDOM(clone, original, type) {
