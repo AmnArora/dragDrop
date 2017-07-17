@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DragulaService } from "ng2-dragula";
 import { AssignmentService } from '../assignment.service'; // For Fetching and Updating the List of Assignment Questions
 import { Question } from "../question"; // The Model for the Question Type
@@ -13,7 +13,7 @@ export class AssignmentContainerComponent implements OnInit {
   Assignmentquestions: Array<Question>;
   drake: any;
   isElementOver: Boolean;
-  constructor(private dragulaService: DragulaService, private assignmentService: AssignmentService) {
+  constructor(private dragulaService: DragulaService, private assignmentService: AssignmentService, private ref: ChangeDetectorRef) {
     this.Assignmentquestions = this.assignmentService.getAssignmentQuestions();
     this.drake = dragulaService.find("questions-bag").drake;
     this.isElementOver = false;
@@ -34,7 +34,14 @@ export class AssignmentContainerComponent implements OnInit {
 
   private onDropModel(args) {
     let [el, target, source] = args;
-    let taskID = el.dataset.id;
+    if (source === document.getElementById("assignment-container")) {
+      // Run Change detection cycle
+      let temp = this.Assignmentquestions;
+      this.Assignmentquestions = null;
+      this.ref.detectChanges();
+      this.Assignmentquestions = temp;
+      this.ref.detectChanges();
+    }
   }
 
   ngOnInit() {
