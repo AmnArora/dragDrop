@@ -10,14 +10,16 @@ declare var autoScroll: any;
   styleUrls: ['./assignment-container.component.scss']
 })
 export class AssignmentContainerComponent implements OnInit {
-  Assignmentquestions: Array<Question>;
+  assignmentQuestions: Array<Question>;
   drake: any;
   isElementOver: Boolean;
   @Input() sidebarOpened: boolean;
+  totalScore;
   constructor(private dragulaService: DragulaService, private assignmentService: AssignmentService, private ref: ChangeDetectorRef) {
-    this.Assignmentquestions = this.assignmentService.getAssignmentQuestions();
+    this.assignmentQuestions = this.assignmentService.getAssignmentQuestions();
     this.drake = dragulaService.find("questions-bag").drake;
     this.isElementOver = false;
+    this.totalScore = 0;
     dragulaService.dropModel.subscribe((value) => {
       // slice the bag name(first Arg) and pass the other params to onDropModel handler     
       this.onDropModel(value.slice(1));
@@ -35,12 +37,15 @@ export class AssignmentContainerComponent implements OnInit {
 
   private onDropModel(args) {
     let [el, target, source] = args;
+    this.totalScore = this.assignmentQuestions.reduce((sum, value) => {
+      return sum = sum + value.score
+    }, 0)
     if (source === document.getElementById("assignment-container")) {
       // Run Change detection cycle
-      let temp = this.Assignmentquestions;
-      this.Assignmentquestions = null;
+      let temp = this.assignmentQuestions;
+      this.assignmentQuestions = null;
       this.ref.detectChanges();
-      this.Assignmentquestions = temp;
+      this.assignmentQuestions = temp;
       this.ref.detectChanges();
     }
   }
@@ -58,8 +63,4 @@ export class AssignmentContainerComponent implements OnInit {
     }
     let scroll = autoScroll([document.getElementById('assignment-container')], scrollOptions);
   }
-
-  // bAssignmentQuestion() {
-  //   return this.Assignmentquestions.length !== 0 ? true : false;
-  // }
 }

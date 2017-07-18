@@ -1,6 +1,7 @@
 <div appShowBackDrop [show]="sidebarOpened">
-  <div [dragula]='"questions-bag"' [dragulaModel]='Assignmentquestions' class="container" id="assignment-container">
-    <app-assignment-item *ngFor="let question of Assignmentquestions; let qIndex = index;" [questionData]="question" [questionIndex]="qIndex + 1"></app-assignment-item>
+  <app-assignment-status [totalCount] ="assignmentQuestions.length" [totalScore] = "totalScore"></app-assignment-status>
+  <div [dragula]='"questions-bag"' [dragulaModel]='assignmentQuestions' class="container" id="assignment-container">
+    <app-assignment-item *ngFor="let question of assignmentQuestions; let qIndex = index;" [questionData]="question" [questionIndex]="qIndex + 1"></app-assignment-item>
     <div id="instruction-text" *ngIf="!isElementOver">
       Drop Questions Here
     </div>

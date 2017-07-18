@@ -1,10 +1,10 @@
 export class Question {
-  application: String;
-  activity: String;
-  stepText: String;
+  application: string;
+  activity: string;
+  stepText: string;
   skill: Array<String>;
-  series: String;
-  chapter: Number;
-  score: Number;
+  series: string;
+  chapter: number;
+  score: number;
   taskID: String
 }

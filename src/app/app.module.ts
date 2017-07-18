@@ -19,6 +19,9 @@ import { AssignmentService } from "./assignment.service";
 import { SidebarModule } from "ng-sidebar";
 import { AssignmentPreferencesComponent } from './assignment-preferences/assignment-preferences.component';
 import { ShowBackDropDirective } from './show-back-drop.directive';
+
+import { DraganddropService } from "./draganddrop.service";
+import { AssignmentStatusComponent } from './assignment-status/assignment-status.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,8 @@ import { ShowBackDropDirective } from './show-back-drop.directive';
     AssignmentContainerComponent,
     AssignmentItemComponent,
     AssignmentPreferencesComponent,
-    ShowBackDropDirective
+    ShowBackDropDirective,
+    AssignmentStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { ShowBackDropDirective } from './show-back-drop.directive';
     TooltipModule.forRoot(),
     SidebarModule.forRoot()
   ],
-  providers: [DataService, AssignmentService],
+  providers: [DataService, AssignmentService, DraganddropService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
