@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DragulaService } from "ng2-dragula";
 import { AssignmentService } from '../assignment.service'; // For Fetching and Updating the List of Assignment Questions
 import { DataService } from "../data.service"; // To Fetch the Complete Questions List
@@ -12,6 +12,7 @@ import { Question } from "../question"; // The Model for the Question Type
 export class QuestionContainerComponent implements OnInit {
 	questions: Array<Question>;
 	assignmentQuestions: Array<Question>;
+	@Input() sidebarOpened: boolean;
 	drake: any;
 	constructor(private dragulaService: DragulaService,
 		private dataService: DataService,

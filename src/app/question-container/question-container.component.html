@@ -1,3 +1,6 @@
-<div [dragula]='"questions-bag"' [dragulaModel]='questions' class="container" id="question-container">
-  <app-question-item *ngFor="let question of questions" [questionData]="question" [isAlreadyAdded]="isQuestionAlreadyAdded(question.taskID)" (questionAdded) = "handleQuestionAddition($event)" [attr.data-id] = "question.taskID"></app-question-item>
+<div appShowBackDrop [show]="sidebarOpened">
+  <div [dragula]='"questions-bag"' [dragulaModel]='questions' class="container" id="question-container">
+    <app-question-item *ngFor="let question of questions" [questionData]="question" [isAlreadyAdded]="isQuestionAlreadyAdded(question.taskID)"
+      (questionAdded)="handleQuestionAddition($event)" [attr.data-id]="question.taskID"></app-question-item>
+  </div>
 </div>

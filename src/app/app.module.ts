@@ -16,20 +16,26 @@ import { AssignmentItemComponent } from './assignment-item/assignment-item.compo
 import { DataService } from "./data.service";
 import { AssignmentService } from "./assignment.service";
 
+import { SidebarModule } from "ng-sidebar";
+import { AssignmentPreferencesComponent } from './assignment-preferences/assignment-preferences.component';
+import { ShowBackDropDirective } from './show-back-drop.directive';
 @NgModule({
   declarations: [
     AppComponent,
     QuestionContainerComponent,
     QuestionItemComponent,
     AssignmentContainerComponent,
-    AssignmentItemComponent
+    AssignmentItemComponent,
+    AssignmentPreferencesComponent,
+    ShowBackDropDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     DragulaModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    SidebarModule.forRoot()
   ],
   providers: [DataService, AssignmentService],
   bootstrap: [AppComponent]

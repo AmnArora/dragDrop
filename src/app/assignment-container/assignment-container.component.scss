@@ -12,6 +12,7 @@
   height: 800px;
   overflow: auto;
   overflow-x: hidden;
+  border: 1px solid #fff;
   @include grab-cursor;
   #instruction-text {
     height: 100px;

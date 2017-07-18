@@ -1,0 +1,18 @@
+.preference-container {
+  padding: 0.5rem;
+  background-color: #3D4854; 
+  height: 800px;
+  color: #fff;
+  .no-list-style {
+    list-style-type: none;
+  }
+  #assignment-preferences {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #assignment-preferences-list {
+    ul {
+      color: #a4a4a4;
+    }
+  }
+}

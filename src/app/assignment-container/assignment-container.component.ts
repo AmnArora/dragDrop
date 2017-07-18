@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { DragulaService } from "ng2-dragula";
 import { AssignmentService } from '../assignment.service'; // For Fetching and Updating the List of Assignment Questions
 import { Question } from "../question"; // The Model for the Question Type
@@ -13,6 +13,7 @@ export class AssignmentContainerComponent implements OnInit {
   Assignmentquestions: Array<Question>;
   drake: any;
   isElementOver: Boolean;
+  @Input() sidebarOpened: boolean;
   constructor(private dragulaService: DragulaService, private assignmentService: AssignmentService, private ref: ChangeDetectorRef) {
     this.Assignmentquestions = this.assignmentService.getAssignmentQuestions();
     this.drake = dragulaService.find("questions-bag").drake;

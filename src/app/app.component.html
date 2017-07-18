@@ -1,8 +1,16 @@
-<div class="dragAndDropWrapper">
-  <div class="col-lg-8 col-md-8 col-sm-8 nopadding">
-    <app-question-container></app-question-container>
+<ng-sidebar-container>
+  <ng-sidebar [(opened)]="sidebarOpened" [mode]="'slide'" [position]="'right'">
+    <app-assignment-preferences></app-assignment-preferences>
+  </ng-sidebar>
+  <div ng-sidebar-content>
+    <div class="dragAndDropWrapper">
+      <div class="col-lg-8 col-md-8 col-sm-8 nopadding">
+        <app-question-container [sidebarOpened] = "sidebarOpened"></app-question-container>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 nopadding">
+        <app-assignment-container [sidebarOpened] = "sidebarOpened"></app-assignment-container>
+        <button class="btn btn-info" [ngClass]="{'pull-right': !sidebarOpened}" (click)="_toggleSidebar()">{{ButtonText}}</button>
+      </div>
+    </div>
   </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 nopadding">
-    <app-assignment-container></app-assignment-container>
-  </div>
-</div>
+</ng-sidebar-container>
